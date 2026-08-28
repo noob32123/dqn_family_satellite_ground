@@ -1,0 +1,12 @@
+{
+  "n_tasks": 20000,
+  "finite": true,
+  "result_le_feature": true,
+  "feature_le_raw": true,
+  "positive_primitives": true,
+  "corr_raw_workload": 0.6602726386923781,
+  "corr_workload_heat": 0.9921920888415202,
+  "corr_raw_ground_tx_heat": 0.9999999999999961,
+  "generator": "physics_correlated",
+  "seed": 9117031
+}

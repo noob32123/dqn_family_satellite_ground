@@ -1,0 +1,16 @@
+parameter,minimum,median,maximum
+raw_mbit,8.068272,35.486008,63.90375
+workload_gflop,0.25525662,2.1057475,3.9986882
+result_ratio,0.010000274,0.02970872,0.04999483
+feature_ratio,0.08090643,0.18924832,0.2975598
+preprocess_fraction,0.20035045,0.32371652,0.44991255
+compute_power_w,6.0518003,12.987431,18.0797
+onboard_rate_gflops,4.0,4.0,4.0
+ground_rate_gflops,80.0,80.0,80.0
+reference_link_mbps,50.0,50.0,50.0
+result_mbit,0.09050068,0.916854,3.160542
+feature_mbit,0.6828433,6.580099,18.948284
+onboard_heat_j,0.3012286,5.3329086,14.097541
+ground_tx_heat_j,0.5325059,2.3420768,4.2176476
+onboard_latency_ms,63.81416,526.4369,999.67206
+ground_compute_ms,3.190708,26.321842,49.983604

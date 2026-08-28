@@ -1,0 +1,55 @@
+{
+  "variants": [
+    "standard_dqn",
+    "full_action_q_dqn",
+    "immediate_advantage_dqn",
+    "centered_full_action_dqn",
+    "double_dqn",
+    "double_centered_full_action_dqn"
+  ],
+  "new_variants": [
+    "full_action_q_dqn",
+    "immediate_advantage_dqn",
+    "double_dqn",
+    "double_centered_full_action_dqn"
+  ],
+  "model_seeds": [
+    800,
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810,
+    811,
+    812,
+    813,
+    814,
+    815,
+    816,
+    817,
+    818,
+    819
+  ],
+  "episodes": 600,
+  "horizon": 64,
+  "test_traces_per_seed_namespace": 20,
+  "common_random_numbers": {
+    "network_initialization": true,
+    "training_environment_episode_seeds": true,
+    "epsilon_exploration_stream": true,
+    "replay_index_stream": true,
+    "held_out_trace_seeds": true
+  },
+  "planner_horizons": [
+    1,
+    2,
+    4,
+    6
+  ],
+  "auxiliary_lambda": 0.3
+}

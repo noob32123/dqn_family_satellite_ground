@@ -1,0 +1,7 @@
+scope,n_contrasts,least_favorable_scenario,least_favorable_policy,maximum_mean_difference,max_statistic_ci95_low,max_statistic_ci95_high,simultaneous_95_upper_bound,all_individual_ci_below_zero,all_holm_supported
+nominal,6,nominal,double_dqn,-12.430002988080838,-12.916855475724677,-11.811067985827213,-11.821955836032544,True,True
+burst,6,burst,double_dqn,-10.737461625190459,-11.263269604562208,-10.128417766512243,-10.174230563769216,True,True
+link_limited,6,link_limited,double_dqn,-13.145175485295116,-13.649379308010076,-12.583252874174462,-12.618541573824897,True,True
+energy_limited,6,energy_limited,double_dqn,-5.922708507133843,-6.655403332698642,-4.9369857452393,-5.040400652588603,True,True
+thermal_stress,6,thermal_stress,double_dqn,-11.401370349766767,-11.944318575992524,-10.774424788725844,-10.835141620250733,True,True
+all_fully_coupled,30,energy_limited,double_dqn,-5.922708507133843,-6.655403332698642,-4.9369857452393,-5.026355182622089,True,True

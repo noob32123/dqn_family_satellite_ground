@@ -1,0 +1,7 @@
+# Direct Python dependencies used for the locked reviewer-revision run.
+# The recorded execution environment used Python 3.13.9 and a CUDA 12.9
+# PyTorch build (torch 2.8.0+cu129). CPU PyTorch builds are also supported.
+numpy==2.4.1
+pandas==3.0.3
+torch==2.8.0
+matplotlib==3.10.8
