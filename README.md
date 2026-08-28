@@ -11,10 +11,6 @@ This package is synchronized with the current manuscript PDF bundled at the pack
 
 The 180 checkpoints comprise 120 checkpoints for the six reported DQN objectives, 20 contextual-bandit checkpoints, and 40 centered-full-action checkpoints used only for the two preview-mismatch conditions. Model seeds are 800--819.
 
-## Deliberately excluded
-
-No manuscript images, rendered figures, LaTeX source, bilingual-reader source, reviewer files, superseded result sets, or historical iterations are included. Figure scripts write newly generated files to `reproduced_outputs/`; that directory is not pre-populated in this package.
-
 ## Algorithm identifiers
 
 The machine-readable identifiers follow the current manuscript terminology:
