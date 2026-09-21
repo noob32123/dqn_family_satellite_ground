@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 import random
 import time
-from typing import Iterable
+from typing import Callable, Iterable
 
 import numpy as np
 import pandas as pd
@@ -68,11 +68,19 @@ def set_deterministic(seed: int) -> None:
 
 
 def config_for(variant: str, episodes: int = EPISODES, horizon: int = HORIZON,
-               auxiliary_lambda: float = AUXILIARY_LAMBDA) -> AgentConfig:
+               auxiliary_lambda: float = AUXILIARY_LAMBDA,
+               gamma_override: float | None = None,
+               epsilon_decay_steps_override: int | None = None) -> AgentConfig:
     gamma = 0.0 if variant == "contextual_bandit" else 0.97
+    if gamma_override is not None:
+        gamma = float(gamma_override)
     return AgentConfig(
         gamma=gamma,
-        epsilon_decay_steps=max(1_000, int(episodes * horizon * 0.35)),
+        epsilon_decay_steps=(
+            int(epsilon_decay_steps_override)
+            if epsilon_decay_steps_override is not None
+            else max(1_000, int(episodes * horizon * 0.35))
+        ),
         auxiliary_lambda=auxiliary_lambda,
     )
 
@@ -144,8 +152,9 @@ def _validate_legacy_config(payload: dict, expected: AgentConfig, variant: str) 
 
 def load_checkpoint(path: Path, variant: str, seed: int, device: torch.device,
                     episodes: int = EPISODES, horizon: int = HORIZON,
-                    auxiliary_lambda: float = AUXILIARY_LAMBDA) -> DQNAgent:
-    config = config_for(variant, episodes, horizon, auxiliary_lambda)
+                    auxiliary_lambda: float = AUXILIARY_LAMBDA,
+                    gamma_override: float | None = None) -> DQNAgent:
+    config = config_for(variant, episodes, horizon, auxiliary_lambda, gamma_override)
     payload = torch.load(path, map_location=device, weights_only=False)
     if payload.get("variant", payload.get("policy")) != variant:
         raise ValueError(f"checkpoint variant mismatch: {path}")
@@ -177,10 +186,16 @@ def train_model(variant: str, seed: int, episodes: int, horizon: int,
                 device: torch.device, auxiliary_lambda: float = AUXILIARY_LAMBDA,
                 environment_config: EnvConfig | None = None,
                 preview_transition_scale: float = 1.0,
+                gamma_override: float | None = None,
+                epsilon_decay_steps_override: int | None = None,
+                episode_callback: Callable[[DQNAgent, list[dict], int], None] | None = None,
                 ) -> tuple[DQNAgent, list[dict]]:
     set_deterministic(seed)
     started = time.perf_counter()
-    config = config_for(variant, episodes, horizon, auxiliary_lambda)
+    config = config_for(
+        variant, episodes, horizon, auxiliary_lambda, gamma_override,
+        epsilon_decay_steps_override,
+    )
     env = SatelliteSchedulingEnv(
         environment_config
         if environment_config is not None
@@ -259,6 +274,8 @@ def train_model(variant: str, seed: int, episodes: int, horizon: int,
                 ) if updates else np.nan,
             }
         )
+        if episode_callback is not None:
+            episode_callback(agent, curve, episode + 1)
     if agent.steps != episodes * horizon:
         raise AssertionError("training interaction budget changed")
     agent.training_accounting = {

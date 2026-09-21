@@ -1,0 +1,13 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+  "python": "3.13.9",
+  "torch": "2.8.0+cu129",
+  "threads": 1,
+  "interop_threads": 1,
+  "batch_size": 1,
+  "repetitions": 3,
+  "shared_states": 340,
+  "warmup_decisions_per_policy": 20,
+  "state_source": "standard DQN, trace index 0, every fourth step plus terminal"
+}

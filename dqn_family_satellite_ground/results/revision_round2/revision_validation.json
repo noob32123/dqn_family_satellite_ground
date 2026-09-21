@@ -1,0 +1,25 @@
+{
+  "gamma_values": [
+    0.9,
+    0.95,
+    0.97,
+    0.99
+  ],
+  "variants": [
+    "standard_dqn",
+    "full_action_q_dqn",
+    "immediate_advantage_dqn",
+    "centered_full_action_dqn",
+    "double_dqn",
+    "double_centered_full_action_dqn"
+  ],
+  "trace_count_per_seed": 20,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20260829,
+  "checkpoint_600_matches_locked_reference": true,
+  "runtime_rows": 8160,
+  "runtime_shared_samples": 340,
+  "gamma_checkpoint_count": 480,
+  "training_length_checkpoint_count": 360,
+  "status": "passed"
+}
